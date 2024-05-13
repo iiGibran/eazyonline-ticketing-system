@@ -20,11 +20,13 @@
       </li>
       <!-- Logo image -->
       <li class="logo-container">
-        <img
-          src="https://cdn1.site-media.eu/images/0/8572152/Neweazyv2dblbdik5-svg1.png"
-          alt="Eazyonline logo"
-          class="logo"
-        />
+        <nuxt-link to="/">
+          <img
+            src="https://cdn1.site-media.eu/images/0/8572152/Neweazyv2dblbdik5-svg1.png"
+            alt="Eazyonline logo"
+            class="logo"
+          />
+        </nuxt-link>
       </li>
     </ul>
   </nav>
@@ -81,7 +83,6 @@ nav ul li a {
   padding: 5px 10px;
 }
 
-nav ul li a:hover,
 .nav-button:hover {
   background-color: #495057;
   border-radius: 5px;
