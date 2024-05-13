@@ -141,7 +141,7 @@ textarea.form-control {
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #1e1e1e;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -150,6 +150,6 @@ textarea.form-control {
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #363636;
 }
 </style>

@@ -21,9 +21,6 @@ h1 {
   text-align: center;
 }
 
-button {
-  margin: 10px;
-}
 .logo {
   display: block;
   margin: 0 auto;

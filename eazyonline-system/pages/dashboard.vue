@@ -218,7 +218,7 @@ export default {
 .ticket {
   margin-bottom: 20px;
   padding: 15px;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -345,11 +345,11 @@ textarea {
 }
 
 .priority-low {
-  background-color: green;
+  background-color: rgb(0, 241, 0);
 }
 
 .priority-medium {
-  background-color: orange;
+  background-color: rgb(255, 166, 0);
 }
 
 .priority-high {
@@ -362,7 +362,7 @@ textarea {
 }
 
 .status-open {
-  color: green;
+  color: rgb(0, 241, 0);
 }
 
 .status-closed {

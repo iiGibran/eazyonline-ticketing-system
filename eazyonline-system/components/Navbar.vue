@@ -80,7 +80,7 @@ nav ul li a {
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
-  padding: 5px 10px;
+  padding: 8px 16px;
 }
 
 .nav-button:hover {
@@ -90,7 +90,7 @@ nav ul li a {
 
 .active-link,
 .nav-button.active-link {
-  background-color: #007bff;
+  background-color: #495057;
   color: #ffffff;
   border-radius: 5px;
 }
