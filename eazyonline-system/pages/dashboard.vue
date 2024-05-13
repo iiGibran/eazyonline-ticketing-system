@@ -35,6 +35,8 @@
 
       <!-- Edit button -->
       <button @click="editTicket(ticket)" class="edit-button">Edit</button>
+
+      <!-- Delete button -->
       <button @click="deleteTicket(ticket.id)" class="delete-button">
         Delete
       </button>
@@ -153,6 +155,7 @@ export default {
     }
   },
   methods: {
+    // setting priorirt values
     getPriorityClass(priority) {
       return {
         low: "priority-low",
@@ -160,6 +163,7 @@ export default {
         high: "priority-high",
       }[priority];
     },
+    // fetching tickets
     async fetchTickets() {
       try {
         const response = await this.$axios.$get("/api/tickets");
@@ -168,10 +172,12 @@ export default {
         console.error("Error fetching tickets:", error);
       }
     },
+    // opening edit modal
     editTicket(ticket) {
       this.editedTicket = { ...ticket };
       this.showEditModal = true;
     },
+    // saving edited ticket
     async saveEditedTicket() {
       try {
         await this.$axios.$put(
@@ -184,10 +190,12 @@ export default {
         console.error("Error saving edited ticket:", error);
       }
     },
+    // canceling edit
     cancelEdit() {
       this.showEditModal = false;
       this.editedTicket = null;
     },
+    // handle deleting ticket
     async deleteTicket(ticketId) {
       try {
         await this.$axios.$delete(`/api/tickets/${ticketId}`);

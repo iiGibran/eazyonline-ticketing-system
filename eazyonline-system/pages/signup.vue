@@ -62,6 +62,7 @@ export default {
         // Update Vuex state after successful signup
         this.$store.commit("logIn");
         localStorage.setItem("isLoggedIn", true);
+        //redirect to login page
         this.$router.push("/login");
       } catch (error) {
         console.error("Error signing up:", error);

@@ -10,6 +10,7 @@ const { body, validationResult } = require("express-validator");
 const app = express();
 const port = 3001;
 
+//connecting to the mysql database
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -17,6 +18,7 @@ const connection = mysql.createConnection({
   database: "tickets_db",
 });
 
+//log error if connection is not established
 connection.connect((err) => {
   if (err) {
     console.error("Error connecting to MySQL:", err);
@@ -25,6 +27,7 @@ connection.connect((err) => {
   console.log("Connected to MySQL");
 });
 
+//nodemailer setup info for example what email are we sending mails from
 const transporter = nodemailer.createTransport({
   host: "smtp.office365.com",
   port: 587,
@@ -39,6 +42,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// a function for sending verification code email and shows what text to show in the email message
 async function sendVerificationEmail(email, verificationCode) {
   try {
     await transporter.sendMail({
@@ -71,7 +75,7 @@ app.post("/api/send-verification-code", (req, res) => {
   }
 });
 
-// User Signup Endpoint
+// User Signup endpoint
 app.post(
   "/api/signup",
   [
@@ -105,7 +109,6 @@ app.post(
           return res.status(500).send("Error storing verification code");
         }
 
-        // Send verification email
         try {
           await sendVerificationEmail(email, verificationCode);
           console.log("Verification email sent successfully.");
@@ -136,6 +139,7 @@ app.post(
   }
 );
 
+// User Login endpoint
 app.post(
   "/api/login",
   [body("email").isEmail(), body("password").isLength({ min: 6 })],
@@ -167,7 +171,7 @@ app.post(
   }
 );
 
-// Existing Ticket Management Endpoints
+// ticket creation endpoint
 app.post("/api/create-ticket", (req, res) => {
   const { firstName, lastName, email, phone, companyName, message } = req.body;
   const truncatedMessage = message.substring(0, 1000);
@@ -201,7 +205,7 @@ app.get("/api/tickets", (req, res) => {
     res.json(results);
   });
 });
-
+// ticket update and save
 app.put("/api/tickets/:ticketId", (req, res) => {
   const ticketId = req.params.ticketId;
   const {
@@ -239,6 +243,7 @@ app.put("/api/tickets/:ticketId", (req, res) => {
   );
 });
 
+// ticket delete request
 app.delete("/api/tickets/:ticketId", (req, res) => {
   const ticketId = req.params.ticketId;
 

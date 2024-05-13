@@ -70,6 +70,7 @@
 <script>
 export default {
   data() {
+    // Form fields with empty strings
     return {
       firstName: "",
       lastName: "",
@@ -101,7 +102,7 @@ export default {
         this.phone = "";
         this.message = "";
       } catch (error) {
-        // Handle error, for example, show an alert
+        // Handle error,'show an alert'
         console.error("Error creating ticket:", error);
         alert("Error creating ticket. Please try again.");
       }
