@@ -18,7 +18,7 @@
       <li v-if="$auth.loggedIn">
         <button @click="logout" class="nav-button">Logout</button>
       </li>
-      <!-- Logo image -->
+      <!-- Logo image with link to homepage -->
       <li class="logo-container">
         <nuxt-link to="/">
           <img
