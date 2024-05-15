@@ -40,7 +40,7 @@ export default {
       password: "",
       verificationCode: "",
       showVerification: false,
-      errorMessage: "", // Error message field
+      errorMessage: "",
     };
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
       return this.email.endsWith("@eazyonline.nl");
     },
     validatePassword() {
-      // Check if the password is at least 6 characters long
+      // Check if the password is at least 6 characters
       return this.password.length >= 6;
     },
     async sendVerificationCode() {
@@ -64,7 +64,7 @@ export default {
         });
         // Show verification code field after sending verification code
         this.showVerification = true;
-        this.errorMessage = ""; // Clear any previous error message
+        this.errorMessage = "";
       } catch (error) {
         console.error("Error sending verification code:", error);
         this.errorMessage =
@@ -74,7 +74,7 @@ export default {
     async signup() {
       try {
         if (!this.validateEmail()) {
-          this.errorMessage = "Email must be from the domain @eazyonline.nl";
+          this.errorMessage = "Email must be end with @eazyonline.nl";
           return;
         }
 
