@@ -3,28 +3,24 @@
     "name": "dashboard",
     "path": "/dashboard",
     "component": "C:\\\\Users\\\\Gibran\\\\Documents\\\\GitHub\\\\Eazyonline Ticketing system\\\\eazyonline-system\\\\pages\\\\dashboard.vue",
-    "chunkName": "pages/dashboard",
-    "_name": "_d76139e8"
+    "chunkName": "pages/dashboard"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\Gibran\\\\Documents\\\\GitHub\\\\Eazyonline Ticketing system\\\\eazyonline-system\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_0654e561"
+    "chunkName": "pages/login"
   },
   {
     "name": "signup",
     "path": "/signup",
     "component": "C:\\\\Users\\\\Gibran\\\\Documents\\\\GitHub\\\\Eazyonline Ticketing system\\\\eazyonline-system\\\\pages\\\\signup.vue",
-    "chunkName": "pages/signup",
-    "_name": "_10a1b3d0"
+    "chunkName": "pages/signup"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\Gibran\\\\Documents\\\\GitHub\\\\Eazyonline Ticketing system\\\\eazyonline-system\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_3cad424a"
+    "chunkName": "pages/index"
   }
 ]
