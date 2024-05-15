@@ -81,6 +81,7 @@ export default {
     };
   },
   methods: {
+    // submission of the form will create a ticket with the same data entered in the form
     async submitForm() {
       try {
         await this.$axios.post("/api/create-ticket", {
@@ -92,13 +93,14 @@ export default {
           message: this.message,
         });
         alert("Ticket created successfully!");
+        // after the successful alert clear out the form fields
         this.firstName = "";
         this.lastName = "";
         this.companyName = "";
         this.email = "";
         this.phone = "";
         this.message = "";
-        this.errorMessage = ""; // Clear error message on successful submission
+        this.errorMessage = "";
       } catch (error) {
         console.error("Error creating ticket:", error);
         this.errorMessage = "Error creating ticket. Please try again.";

@@ -35,7 +35,7 @@ export default {
         // Commit to Vuex store on successful login
         this.$store.commit("logIn");
         localStorage.setItem("isLoggedIn", true);
-        // Redirect to dashboard
+        // Redirect the user to the dashboard
         this.$router.push("/dashboard");
       } catch (error) {
         console.error("Error logging in:", error);
