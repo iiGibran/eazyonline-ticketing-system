@@ -22,7 +22,6 @@
           class="form-control"
         />
       </div>
-
       <div class="form-group">
         <label for="companyName">Company Name:</label>
         <input
@@ -64,13 +63,13 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    // Form fields with empty strings
     return {
       firstName: "",
       lastName: "",
@@ -78,12 +77,12 @@ export default {
       email: "",
       phone: "",
       message: "",
+      errorMessage: "",
     };
   },
   methods: {
     async submitForm() {
       try {
-        // Send form data to the backend server using Axios
         await this.$axios.post("/api/create-ticket", {
           firstName: this.firstName,
           lastName: this.lastName,
@@ -92,19 +91,17 @@ export default {
           phone: this.phone,
           message: this.message,
         });
-        // Handle success, 'show an alert'
         alert("Ticket created successfully!");
-        // reset form fields after successful submission
         this.firstName = "";
         this.lastName = "";
         this.companyName = "";
         this.email = "";
         this.phone = "";
         this.message = "";
+        this.errorMessage = ""; // Clear error message on successful submission
       } catch (error) {
-        // Handle error,'show an alert'
         console.error("Error creating ticket:", error);
-        alert("Error creating ticket. Please try again.");
+        this.errorMessage = "Error creating ticket. Please try again.";
       }
     },
   },
@@ -151,5 +148,11 @@ textarea.form-control {
 
 .btn-primary:hover {
   background-color: #363636;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
 }
 </style>
