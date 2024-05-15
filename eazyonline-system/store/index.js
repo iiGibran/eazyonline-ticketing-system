@@ -1,4 +1,3 @@
-// store/index.js
 export const state = () => ({
   isLoggedIn: false,
 });
@@ -10,4 +9,8 @@ export const mutations = {
   logOut(state) {
     state.isLoggedIn = false;
   },
+};
+
+export const actions = {
+  nuxtServerInit({ commit }, { req }) {},
 };
