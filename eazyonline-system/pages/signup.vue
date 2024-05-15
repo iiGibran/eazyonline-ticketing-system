@@ -27,6 +27,7 @@
         Send Verification Code
       </button>
       <button v-if="showVerification" type="submit" class="btn">Signup</button>
+      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -39,22 +40,49 @@ export default {
       password: "",
       verificationCode: "",
       showVerification: false,
+      errorMessage: "", // Error message field
     };
   },
   methods: {
+    validateEmail() {
+      // Check if the email ends with @eazyonline.nl
+      return this.email.endsWith("@eazyonline.nl");
+    },
+    validatePassword() {
+      // Check if the password is at least 6 characters long
+      return this.password.length >= 6;
+    },
     async sendVerificationCode() {
       try {
+        if (!this.validateEmail()) {
+          this.errorMessage = "Email must be from the domain @eazyonline.nl";
+          return;
+        }
+
         await this.$axios.post("/api/send-verification-code", {
           email: this.email,
         });
         // Show verification code field after sending verification code
         this.showVerification = true;
+        this.errorMessage = ""; // Clear any previous error message
       } catch (error) {
         console.error("Error sending verification code:", error);
+        this.errorMessage =
+          "Error sending verification code. Please try again.";
       }
     },
     async signup() {
       try {
+        if (!this.validateEmail()) {
+          this.errorMessage = "Email must be from the domain @eazyonline.nl";
+          return;
+        }
+
+        if (!this.validatePassword()) {
+          this.errorMessage = "Password must be at least 6 characters long";
+          return;
+        }
+
         await this.$axios.$post("/api/signup", {
           email: this.email,
           password: this.password,
@@ -62,10 +90,11 @@ export default {
         // Update Vuex state after successful signup
         this.$store.commit("logIn");
         localStorage.setItem("isLoggedIn", true);
-        //redirect to login page
+        // Redirect to login page
         this.$router.push("/login");
       } catch (error) {
         console.error("Error signing up:", error);
+        this.errorMessage = "Error signing up. Please try again.";
       }
     },
   },
@@ -108,5 +137,11 @@ export default {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
 }
 </style>
