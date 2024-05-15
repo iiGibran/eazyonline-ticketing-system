@@ -88,7 +88,7 @@ describe("TicketForm Integration Test", () => {
       message: "This is a test ticket",
     });
 
-    // Simulate form submission
+    // Simulate form submission failure
     await wrapper.find("form").trigger("submit.prevent");
     await Vue.nextTick();
 
